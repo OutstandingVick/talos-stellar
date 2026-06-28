@@ -361,7 +361,7 @@ mod tests {
 
     #[test]
     fn unauthorized_caller_rejected() {
-       let (env, registry_contract, contract_id, registry_client, client) = setup();
+       let (env, registry_contract, contract_id, registry_client, client) 
         let creator = Address::generate(&env);
         let unauthorized = Address::generate(&env);
         let protocol_wallet = Address::generate(&env);
@@ -464,8 +464,6 @@ mod tests {
         assert_eq!(topics.len() as u32, 2);
 
         let t0: Symbol = TryFromVal::try_from_val(&env, &topics.get(0).unwrap()).unwrap();
-        assert_eq!(t0, symbol_short!("name_reg"));
-        let t1: u32 = TryFromVal::try_from_val(&env, &topics.get(1).unwrap()).unwrap();
         assert_eq!(t1, talos_id);
 
         let (got_name, got_owner): (String, Address) =
@@ -506,8 +504,6 @@ mod tests {
         // Register second name
         register_name_with_auth(
             &env,
-            &client,
-            &contract_id,
             &registry_contract,
             &owner,
             talos_id,
