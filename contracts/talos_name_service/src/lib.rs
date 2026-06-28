@@ -288,7 +288,7 @@ mod tests {
 
     #[test]
     fn register_name_success() {
-       let (env, registry_contract, contract_id, _registry_client, client) = setup();
+       let (env, registry_contract, contract_id, registry_client, client) = setup();
         let owner = Address::generate(&env);
         let protocol_wallet = Address::generate(&env);
         let name = s(&env, "marketbot");
@@ -407,7 +407,7 @@ mod tests {
 
     #[test]
     fn lookup_by_name_returns_correct_talos_id() {
-       let (env, registry_contract, contract_id, _registry_client, client) = setup();
+       let (env, registry_contract, contract_id, registry_client, client) = setup();
         let protocol_wallet = Address::generate(&env);
         let name = s(&env, "atlas-agent");
 
@@ -447,7 +447,7 @@ mod tests {
 
     #[test]
     fn register_name_emits_name_reg_event() {
-       let (env, registry_contract, contract_id, _registry_client, client) = setup();
+       let (env, registry_contract, contract_id, registry_client, client) = setup();
         let protocol_wallet = Address::generate(&env);
         let name = s(&env, "marketbot");
 
